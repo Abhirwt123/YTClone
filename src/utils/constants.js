@@ -42,10 +42,73 @@ export const YOUTUBE_LOGO = (
 
 );
 
-const API_KEY = 'AIzaSyDb-Vqb9FDDm2LX2uN3wcrLMFeRner2mzQ'
+const API_KEY = 'AIzaSyD9vuOVBJTCFGg9oZR1Y9sp6ZXRonlzKUQ'
 export const GOOGLE_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=${API_KEY}`;
 
 export const CHANNEL_URL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=IN_mDsATFwxTSYHTN9VfuEWELcAW_s&key=${API_KEY}
 `
 
-export const YOUTUBE_SEARCH_URL='http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=';
+export const YOUTUBE_SEARCH_URL = 'http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=';
+
+
+export const DUMMY_LIVE_CHAT_PROFILE_URL = 'https://avatar.iran.liara.run/public/boy?username=';
+
+
+var nameList = [
+    'Time', 'Past', 'Future', 'Dev',
+    'Fly', 'Flying', 'Soar', 'Soaring', 'Power', 'Falling',
+    'Fall', 'Jump', 'Cliff', 'Mountain', 'Rend', 'Red', 'Blue',
+    'Green', 'Yellow', 'Gold', 'Demon', 'Demonic', 'Panda', 'Cat',
+    'Kitty', 'Kitten', 'Zero', 'Memory', 'Trooper', 'XX', 'Bandit',
+    'Fear', 'Light', 'Glow', 'Tread', 'Deep', 'Deeper', 'Deepest',
+    'Mine', 'Your', 'Worst', 'Enemy', 'Hostile', 'Force', 'Video',
+    'Game', 'Donkey', 'Mule', 'Colt', 'Cult', 'Cultist', 'Magnum',
+    'Gun', 'Assault', 'Recon', 'Trap', 'Trapper', 'Redeem', 'Code',
+    'Script', 'Writer', 'Near', 'Close', 'Open', 'Cube', 'Circle',
+    'Geo', 'Genome', 'Germ', 'Spaz', 'Shot', 'Echo', 'Beta', 'Alpha',
+    'Gamma', 'Omega', 'Seal', 'Squid', 'Money', 'Cash', 'Lord', 'King',
+    'Duke', 'Rest', 'Fire', 'Flame', 'Morrow', 'Break', 'Breaker', 'Numb',
+    'Ice', 'Cold', 'Rotten', 'Sick', 'Sickly', 'Janitor', 'Camel', 'Rooster',
+    'Sand', 'Desert', 'Dessert', 'Hurdle', 'Racer', 'Eraser', 'Erase', 'Big',
+    'Small', 'Short', 'Tall', 'Sith', 'Bounty', 'Hunter', 'Cracked', 'Broken',
+    'Sad', 'Happy', 'Joy', 'Joyful', 'Crimson', 'Destiny', 'Deceit', 'Lies',
+    'Lie', 'Honest', 'Destined', 'Bloxxer', 'Hawk', 'Eagle', 'Hawker', 'Walker',
+    'Zombie', 'Sarge', 'Capt', 'Captain', 'Punch', 'One', 'Two', 'Uno', 'Slice',
+    'Slash', 'Melt', 'Melted', 'Melting', 'Fell', 'Wolf', 'Hound',
+    'Legacy', 'Sharp', 'Dead', 'Mew', 'Chuckle', 'Bubba', 'Bubble', 'Sandwich', 'Smasher', 'Extreme', 'Multi', 'Universe', 'Ultimate', 'Death', 'Ready', 'Monkey', 'Elevator', 'Wrench', 'Grease', 'Head', 'Theme', 'Grand', 'Cool', 'Kid', 'Boy', 'Girl', 'Vortex', 'Paradox'
+];
+export function generateRandomNames() {
+    return nameList[Math.floor(Math.random() * nameList.length)];
+
+};
+
+const liveChatMessages = [
+    "Hey everyone! Welcome to the live chat!",
+    "What's up, chat?",
+    "I'm loving this stream!",
+    "Who else is excited for the next segment?",
+    "Can't believe I finally caught a live stream!",
+    "Shoutout to all the awesome people in the chat!",
+    "This is so much fun!",
+    "Let's keep the chat positive and respectful, everyone!",
+    "Who's your favorite YouTuber?",
+    "What's everyone up to today?",
+    "Just dropping by to say hi!",
+    "Don't forget to like and subscribe!",
+    "I'm new here, what's this channel about?",
+    "Anybody else binge-watching this channel's videos?",
+    "I'm loving the energy in this chat!",
+    "Let's spread some positivity!",
+    "Can't wait for the next video upload!",
+    "Who else is watching from [insert location]?",
+    "The content on this channel is top-notch!",
+    "Big shoutout to the moderators keeping the chat clean!",
+];
+
+
+export function generateRandomMessages() {
+    let randomMessage=(Math.floor(Math.random(liveChatMessages)*liveChatMessages.length))
+    return liveChatMessages[randomMessage]
+}
+export const YOUTUBE_SEARCHTAB_URL=`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=video&key=${API_KEY}&q=`;
+ 

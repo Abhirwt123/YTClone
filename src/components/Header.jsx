@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { VscDeviceCameraVideo } from "react-icons/vsc";
 import { IoIosMenu } from "react-icons/io";
-import { YOUTUBE_LOGO, YOUTUBE_SEARCH_URL } from '../utils/constants';
+import { YOUTUBE_LOGO, YOUTUBE_SEARCHTAB_URL, YOUTUBE_SEARCH_URL } from '../utils/constants';
 import { CiSearch } from "react-icons/ci";
 import { useDispatch } from 'react-redux';
 import { toggleMenu } from '../Redux/appSlice';
@@ -40,6 +40,11 @@ const Header = () => {
 
     }
 
+    const handleSearch=async(e)=>{
+        e.preventDefault()
+     navigate(`/results?search_query=${searchQuery}`)
+    }
+
     return (
         <div id='header' className='px-4 py-3 flex justify-between items-center '>
             <div className="left flex items-center gap-4">
@@ -58,7 +63,9 @@ const Header = () => {
                         onBlur={() => setShowSuggestions(false)}
                         onChange={(e) => setSearchQuery(e.target.value)} />
                     <button
-                        className='rounded-e-full border px-4 py-2'>
+                        className='rounded-e-full border px-4 py-2'
+                        onClick={handleSearch}
+                        >
                         <CiSearch className='font-6xl' />
                     </button>
                 </form>

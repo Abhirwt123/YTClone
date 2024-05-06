@@ -13,7 +13,7 @@ const RecomendedVideos = ({ info }) => {
     };
     // console.log(info);
     return (
-        <div onClick={handelWatchPage}>
+        <div onClick={handelWatchPage} className="mb-4">
             <div className="flex gap-2  ">
                 <div className="video min-w-[150px]">
                     <img src={info?.snippet?.thumbnails?.default?.url} className='object-cover h-full w-[100%] rounded-md' alt="" />

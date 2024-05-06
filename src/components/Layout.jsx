@@ -5,6 +5,7 @@ import VideosContainer from './VideoContainer/VideosContainer';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Watch from './Watch/Watch';
 import Text from './text';
+import SearchResults from './SearchResults/SearchResults';
 
 const MainContent = ({ children }) => (
     <div className=''>
@@ -23,6 +24,7 @@ const Layout = () => {
             <Routes>
                 <Route path='/' element={<MainContent><VideosContainer /></MainContent>} />
                 <Route path='/watch' element={<MainContent><Watch /></MainContent>} />
+                <Route path='/results' element={<MainContent><SearchResults/></MainContent>} />
             </Routes>
         </Router>
     );
