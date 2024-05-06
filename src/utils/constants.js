@@ -42,12 +42,6 @@ export const YOUTUBE_LOGO = (
 
 );
 
-const API_KEY = 'AIzaSyD9vuOVBJTCFGg9oZR1Y9sp6ZXRonlzKUQ'
-export const GOOGLE_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=${API_KEY}`;
-
-export const CHANNEL_URL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=IN_mDsATFwxTSYHTN9VfuEWELcAW_s&key=${API_KEY}
-`
-
 export const YOUTUBE_SEARCH_URL = 'http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=';
 
 
@@ -110,5 +104,17 @@ export function generateRandomMessages() {
     let randomMessage=(Math.floor(Math.random(liveChatMessages)*liveChatMessages.length))
     return liveChatMessages[randomMessage]
 }
+
+
+const API_KEY = 'AIzaSyD9vuOVBJTCFGg9oZR1Y9sp6ZXRonlzKUQ'
+export const GOOGLE_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=${API_KEY}`;
+
+export const CHANNEL_URL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=IN_mDsATFwxTSYHTN9VfuEWELcAW_s&key=${API_KEY}
+`
+
 export const YOUTUBE_SEARCHTAB_URL=`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=video&key=${API_KEY}&q=`;
  
+
+export const   GET_YOUTUBE_COMMENTS_URL=`https://www.googleapis.com/youtube/v3/commentThreads?key=${API_KEY}&textFormat=plainText&part=snippet&maxResults=50&videoId=`
+
+export const YOUTUBE_CHANNEL_INFO_URL=`https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&key=${API_KEY}&id=`

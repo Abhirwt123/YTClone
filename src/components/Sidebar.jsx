@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 const Sidebar = () => {
     const menu = useSelector((store) => store.app.isMenuOpen);
     return (<> {menu &&
-        <aside className="barStyle w-2/12 flex flex-col justify-between h-[calc(100vh-14.6vh)] overflow-y-scroll">
+        <aside className="barStyle w-2/12 flex flex-col justify-between h-[calc(100vh-9vh)] overflow-y-scroll">
             <div className="optWrap">
                 <div className="box border-b px-4 py-2 ">
                     <ul className='flex flex-col gap-4'>

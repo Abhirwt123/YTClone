@@ -32,7 +32,6 @@ const Header = () => {
         try {
             const data = await fetch(YOUTUBE_SEARCH_URL + searchQuery);
             const json = await data.json();
-            console.log(json);
             setSearchQueryResults(json[1])
         } catch (error) {
             console.log(error);
@@ -40,9 +39,14 @@ const Header = () => {
 
     }
 
-    const handleSearch=async(e)=>{
+    const handleSearch = async (e) => {
         e.preventDefault()
-     navigate(`/results?search_query=${searchQuery}`)
+        navigate(`/results?search_query=${searchQuery}`)
+    }
+
+    const handleSearchValues=(value)=>{
+        setShowSuggestions(false)
+        navigate(`/results?search_query=${searchQuery}`)
     }
 
     return (
@@ -60,18 +64,18 @@ const Header = () => {
                         className='rounded-s-full border px-4 py-2 w-full'
                         value={searchQuery}
                         onFocus={() => setShowSuggestions(true)}
-                        onBlur={() => setShowSuggestions(false)}
+                        // onBlur={() =>  setShowSuggestions(false)}
                         onChange={(e) => setSearchQuery(e.target.value)} />
                     <button
                         className='rounded-e-full border px-4 py-2'
                         onClick={handleSearch}
-                        >
+                    >
                         <CiSearch className='font-6xl' />
                     </button>
                 </form>
                 {showSuggestions && <div className='absolute z-10 bg-gray-100 w-[92%] rounded-lg'>
                     <ul>
-                        {searchQueryResults.map((res, index) => <li className='px-4 py-2 flex items-center gap-2 hover:bg-gray-200' key={index}><CiSearch />{res}</li>)}
+                        {searchQueryResults.map((res, index) => <li onClick={()=>handleSearchValues(res)} className='px-4 py-2 flex items-center gap-2 hover:bg-gray-200' key={index}><CiSearch />{res}</li>)}
                     </ul>
                 </div>}
             </div>

@@ -24,8 +24,8 @@ const VideosContainer = () => {
     };
     if (!popularVideos) return
     return (
-        <div className={`${menu ? "w-10/12" : "w-full"} overflow-y-scroll barStyle h-[calc(100vh-14.6vh)] pt-14 px-4`} >
-            <VideoList />
+        <div className={`${menu ? "w-10/12" : "w-full"} overflow-y-scroll barStyle h-[calc(100vh-9vh)] pt-14 px-4`}>
+             <VideoList />
             <div className="grid grid-cols-12 gap-6">
                 {popularVideos.map((info) => <Videos key={info.id} info={info} />)}
             </div>
