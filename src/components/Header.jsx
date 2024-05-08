@@ -7,6 +7,7 @@ import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../Redux/appSlice';
 import { useNavigate } from 'react-router-dom';
+import { addCache } from '../Redux/searchSlice';
 
 const Header = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -25,7 +26,9 @@ const Header = () => {
     useEffect(() => {
         const timer = setTimeout(() =>{
             if(cacheData){
-                
+                setSearchQueryResults({[searchQuery]:cacheData})
+            }else{
+                getSearchSuggestions()
             }
         }, 200);
         return () => {
@@ -38,6 +41,7 @@ const Header = () => {
             const data = await fetch(YOUTUBE_SEARCH_URL + searchQuery);
             const json = await data.json();
             setSearchQueryResults(json[1])
+            dispatch(addCache({[searchQuery]:json[1]}))
         } catch (error) {
             console.log(error);
         }
