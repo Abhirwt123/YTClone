@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { VscDeviceCameraVideo } from "react-icons/vsc";
 import { IoIosMenu } from "react-icons/io";
-import { YOUTUBE_LOGO, YOUTUBE_SEARCHTAB_URL, YOUTUBE_SEARCH_URL } from '../utils/constants';
+import { YOUTUBE_LOGO, YOUTUBE_SEARCH_URL } from '../utils/constants';
 import { CiSearch } from "react-icons/ci";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../Redux/appSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,6 +12,7 @@ const Header = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchQueryResults, setSearchQueryResults] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
+    const cacheData=useSelector((store)=>store.search)
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handelMenu = () => {
@@ -22,7 +23,11 @@ const Header = () => {
     }
     // debouncinig concept
     useEffect(() => {
-        const timer = setTimeout(() => getSearchSuggestions(), 200)
+        const timer = setTimeout(() =>{
+            if(cacheData){
+                
+            }
+        }, 200);
         return () => {
             clearTimeout(timer)
         }
