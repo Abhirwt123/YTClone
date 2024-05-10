@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { closeMenu } from '../../Redux/appSlice';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import RecomendedVideos from './RecomendedVideos';
 import { GET_YOUTUBE_COMMENTS_URL, GOOGLE_URL, YOUTUBE_CHANNEL_INFO_URL, generateRandomMessages, generateRandomNames } from '../../utils/constants';
@@ -12,12 +12,12 @@ import ChannelInfo from './ChannelInfo';
 const Watch = () => {
     const [popularVideos, setPopularVideos] = useState();
     const [commentsList, setcommentsList] = useState([]);
-    const [channelInfo, setChannelInfo] = useState({});
+    const [channelInfo, setChannelInfo] = useState({});       
     const [myMessage, setMyMessage] = useState({ name: '', message: '' });
     const menu = useSelector((store) => store.app.isMenuOpen);
     const messagesList = useSelector((store) => store.chat.messages);
     const [searchParams] = useSearchParams();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();                         
     const getVideos = async () => {
         try {
             const data = await fetch(GOOGLE_URL);
@@ -62,11 +62,13 @@ const Watch = () => {
         setChannelInfo(json.items[0].snippet)
         console.log(json);
     }
+
+ 
+
     if (!popularVideos) return
     return (
         <div className={`${!menu ? "px-16" : "px-8"} py-4 w-full`}>
-            <div className="wrap grid grid-cols-12 gap-8">
-
+            <div className="wrap grid grid-cols-12 gap-8" >
                 <div className="video-box col-span-8">
                     <iframe className='w-full h-[70vh] rounded-xl' src={`https://www.youtube.com/embed/${searchParams.get('v')} `} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     <ChannelInfo info={channelInfo} />
@@ -76,7 +78,6 @@ const Watch = () => {
                             <h1 className='font-bold text-xl pb-8'>{commentsList.length} Comments</h1>
                         </div>
                         {commentsList.map((comment) => <Comments key={comment.id} info={comment} />)}
-
                     </div>
                 </div>
 

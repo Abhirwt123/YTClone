@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import appReducer from './appSlice'
+import appSlice from './appSlice'
 import chatSlice from "./chatSlice";
 import searchSlice from "./searchSlice";
+import authSlice from "./authSlice";
  const store =configureStore({
     reducer:{
-        app:appReducer,
+        auth:authSlice,
+        app:appSlice,
         chat:chatSlice,
         search:searchSlice
     },

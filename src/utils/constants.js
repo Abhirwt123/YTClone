@@ -46,7 +46,7 @@ export const YOUTUBE_SEARCH_URL = 'http://suggestqueries.google.com/complete/sea
 
 export const DUMMY_LIVE_CHAT_PROFILE_URL = 'https://avatar.iran.liara.run/public/boy?username=';
 
-var nameList = [
+const nameList = [
     'Time', 'Past', 'Future', 'Dev',
     'Fly', 'Flying', 'Soar', 'Soaring', 'Power', 'Falling',
     'Fall', 'Jump', 'Cliff', 'Mountain', 'Rend', 'Red', 'Blue',
