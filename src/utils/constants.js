@@ -105,7 +105,7 @@ export function generateRandomMessages() {
 
 const API_KEY = 'AIzaSyD9vuOVBJTCFGg9oZR1Y9sp6ZXRonlzKUQ';
 
-export const GOOGLE_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=${API_KEY}`;
+export const GOOGLE_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=${API_KEY}&videoCategoryId=`;
 
 export const CHANNEL_URL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=IN_mDsATFwxTSYHTN9VfuEWELcAW_s&key=${API_KEY}`;
 
@@ -114,3 +114,5 @@ export const YOUTUBE_SEARCHTAB_URL=`https://www.googleapis.com/youtube/v3/search
 export const   GET_YOUTUBE_COMMENTS_URL=`https://www.googleapis.com/youtube/v3/commentThreads?key=${API_KEY}&textFormat=plainText&part=snippet&maxResults=50&videoId=`;
 
 export const YOUTUBE_CHANNEL_INFO_URL=`https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&key=${API_KEY}&id=`;
+
+export const YOUTUBE_VIDEO_CATEGORY_URL=`https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key=${API_KEY}`

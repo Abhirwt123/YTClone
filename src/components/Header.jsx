@@ -8,15 +8,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../Redux/appSlice';
 import { useNavigate } from 'react-router-dom';
 import { addCache } from '../Redux/searchSlice';
+import Profile from './MyProfile/Profile';
 
 const Header = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchQueryResults, setSearchQueryResults] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const cacheData = useSelector((store) => store.search)
+    const [showProfile,setShowProfile]=useState(false)
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const getFromLocal = localStorage.getItem('userData');
+    const { name } = JSON.parse(getFromLocal);
 
     const handelMenu = () => {
         dispatch(toggleMenu())
@@ -69,8 +74,10 @@ const Header = () => {
         navigate(`/results?search_query=${searchQuery}`)
     }
 
+    
+
     return (
-        <div id='header' className='px-4 py-3 flex justify-between items-center '>
+        <div id='header' className='px-4 py-3 flex justify-between items-center relative'>
             <div className="left flex items-center gap-4">
                 <div className="menuIcon cursor-pointer" onClick={handelMenu}><IoIosMenu /></div>
                 <div className="logo w-24 cursor-pointer" onClick={handleToHome}>{YOUTUBE_LOGO}</div>
@@ -100,12 +107,18 @@ const Header = () => {
                 </div>}
             </div>
             <div className="right">
-                <div className="icons flex items-center gap-4">
+                <div className="icons flex items-center gap-4 ">
                     <div className="create"><VscDeviceCameraVideo /></div>
                     <div className="notification"><IoIosNotificationsOutline /></div>
-                    <div className="profile"><div className="box w-8 h-8 rounded-full bg-red-600"></div></div>
+                    <div className="profile">
+                        <div className="img-wrap cursor-pointer" onClick={()=>setShowProfile(!showProfile)}>
+                            <p className='w-8 h-8 bg-blue-800 rounded-full text-center '>
+                                <span className='leading-[30px] text-xl text-white font-semibold'>{name.slice(0, 1)}</span>
+                            </p>
+                        </div></div>
                 </div>
             </div>
+            <Profile showProfile={showProfile} />
         </div>
     );
 };

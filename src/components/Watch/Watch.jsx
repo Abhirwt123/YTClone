@@ -27,7 +27,7 @@ const Watch = () => {
             console.error('Error fetching data:', error);
         }
     };
-
+  
     useEffect(() => {
         getVideos();
         dispatch(closeMenu());

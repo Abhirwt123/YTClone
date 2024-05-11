@@ -3,12 +3,15 @@ import youtubeImg from '../../images/youtube.jpg'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserData } from '../../Redux/authSlice';
+import { ValidateForm } from '../../utils/validate';
 
 function SignUp() {
     const [credentials, setCredentials] = useState({
+        name: '',
         email: '',
         password: ''
     });
+    const [errorMessage, setErrorMessage] = useState('')
     const { isAuthenticate } = useSelector((store) => store.auth)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -23,15 +26,19 @@ function SignUp() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (isAuthenticate) {
+        const { name, email, password } = credentials;
+        const message = ValidateForm(name, email, password)
+        setErrorMessage(message)
+        console.log(errorMessage);
+        if (errorMessage && isAuthenticate) {
             navigate('/')
         }
     }
 
     useEffect(() => {
-       if(localStorage.getItem('userData')){
-        navigate('/')
-       }
+        if (localStorage.getItem('userData')) {
+            navigate('/')
+        }
     }, [])
     return (
         <div className="flex justify-center items-center h-screen bg-red-200">
@@ -48,6 +55,23 @@ function SignUp() {
                 <div className="md:w-1/2 p-4">
                     <h2 className="text-gray-800 text-3xl font-semibold">Create Your Account</h2>
                     <form className="mt-8" onSubmit={handleSubmit}>
+                        <div className="mb-4">
+                            <label
+                                htmlFor="email"
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                            >
+                                Name
+                            </label>
+                            <input
+                                type="text"
+                                value={credentials.name}
+                                id="name"
+                                name='name'
+                                onChange={handleChange}
+                                placeholder="Enter your name"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                            />
+                        </div>
                         <div className="mb-4">
                             <label
                                 htmlFor="email"
