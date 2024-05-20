@@ -7,6 +7,27 @@ const ChannelInfo = ({ info }) => {
     const [showDes, setShowDes] = useState(false);
     const { channelTitle, description, title } = info;
     const newDescription = description.replace(/\n/g, '<br/>');
+
+    const handleDownloadVideo=async()=>{
+        try {
+            const response = await fetch('http://localhost:5000/download-video');
+            if (response.ok) {
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'video.mp4';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            } else {
+                console.error('Failed to download video');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+    
     return (
         <div>
             <div className="head mt-2">
@@ -36,7 +57,7 @@ const ChannelInfo = ({ info }) => {
                     </div>
                     <div className="btn flex items-center bg-gray-100 px-4 py-2 rounded-full">
                         <HiDownload />
-                        <button className='ps-2'>Download</button>
+                        <button className='ps-2' onClick={handleDownloadVideo}>Download</button>
                     </div>
                     <div className="btn text-center bg-gray-100 px-4 py-2 rounded-full">
                         <HiOutlineDotsHorizontal />
