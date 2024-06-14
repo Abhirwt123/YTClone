@@ -103,9 +103,10 @@ export function generateRandomMessages() {
     return liveChatMessages[randomMessage]
 }
 
-const API_KEY = 'AIzaSyD9vuOVBJTCFGg9oZR1Y9sp6ZXRonlzKUQ';
+const API_KEY = 'AIzaSyCeEtgpyDbsCKxnBxxv_vQpPjjBJ6EDuws';
 
-export const GOOGLE_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=${API_KEY}&videoCategoryId=`;
+
+export const GOOGLE_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=${API_KEY}&videoCategoryId=1`;
 
 export const CHANNEL_URL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=IN_mDsATFwxTSYHTN9VfuEWELcAW_s&key=${API_KEY}`;
 

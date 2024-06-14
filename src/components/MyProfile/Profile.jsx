@@ -19,7 +19,7 @@ const Profile = ({ showProfile }) => {
                         <p className='w-12 h-12 bg-blue-800 rounded-full text-center '><span className='leading-[44px] text-2xl text-white font-semibold'>{name?name.slice(0, 1):"U"}</span> </p>
                     </div>
                     <div className="detail-wrap ms-4">
-                        <p className="name mb-2 font-semibold">{name?name.slice(0, 1):"User 0001"}</p>
+                        <p className="name mb-2 font-semibold">{name?name:"User 0001"}</p>
                         <p className="email mb-2 font-normal ">{email?email:"Example123@gmail.com"}</p>
                     </div>
                 </div>

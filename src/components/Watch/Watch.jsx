@@ -60,16 +60,13 @@ const Watch = () => {
         const data = await fetch(YOUTUBE_CHANNEL_INFO_URL + searchParams.get('v'))
         const json = await data.json();
         setChannelInfo(json.items[0].snippet)
-        console.log(json);
     }
-
- 
 
     if (!popularVideos) return
     return (
         <div className={`${!menu ? "px-16" : "px-8"} py-4 w-full`}>
             <div className="wrap grid grid-cols-12 gap-8" >
-                <div className="video-box col-span-8">
+                <div className="video-box lg:col-span-8 col-span-12">
                     <iframe className='w-full h-[70vh] rounded-xl' src={`https://www.youtube.com/embed/${searchParams.get('v')} `} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     <ChannelInfo info={channelInfo} />
 
@@ -81,7 +78,7 @@ const Watch = () => {
                     </div>
                 </div>
 
-                <div className="recomendedVideos col-span-4 gap-4">
+                <div className="recomendedVideos lg:col-span-4 col-span-12 gap-4">
 
                     <div className='border-t-2 border-x-2 p-4 rounded-t-md  max-h-[67vh] overflow-y-scroll flex flex-col-reverse min-h-[64vh]'>
                         {messagesList.map((mess, index) => <LiveChat key={index} name={mess.name} message={mess.message} />)}

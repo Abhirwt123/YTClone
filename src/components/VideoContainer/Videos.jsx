@@ -11,7 +11,7 @@ const Videos = ({ info }) => {
         navigate(`/watch?v=${info.id}`)
     }
     return (
-        <div className='box col-span-4' onClick={handelWatchPage}>
+        <div className='box lg:col-span-4 md:col-span-6 col-span-12' onClick={handelWatchPage}>
             <div className="thumbnail ">
                 <img src={info?.snippet?.thumbnails?.medium?.url} alt="" className='w-full rounded-md h-full object-cover' />
             </div>

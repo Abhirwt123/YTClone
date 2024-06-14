@@ -70,6 +70,7 @@ const Header = () => {
     }
 
     const handleSearchValues = (value) => {
+         setSearchQuery(value)
         setShowSuggestions(false)
         navigate(`/results?search_query=${searchQuery}`)
     }
